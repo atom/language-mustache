@@ -1,0 +1,30 @@
+{
+  "fileTypes": [
+    "mustache",
+    "handlebars",
+    "hbs"
+  ],
+  "keyEquivalent": "^~H",
+  "name": "HTML (Mustache)",
+  "patterns": [
+    {
+      "begin": "\\{\\{!",
+      "end": "\\}\\}",
+      "name": "comment.block.mustache"
+    },
+    {
+      "begin": "\\{\\{[{<>#^/]?",
+      "captures": {
+        "0": {
+          "name": "entity.name.tag.mustache"
+        }
+      },
+      "end": "\\}?\\}\\}",
+      "name": "meta.tag.template.mustache"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "scopeName": "text.html.mustache"
+}
