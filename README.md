@@ -1,6 +1,6 @@
 # Mustache language support in Atom
 
-Adds syntax highlighting and snippets to Mustache files in Atom.
+Adds syntax highlighting to Mustache files in Atom.
 
 Originally [converted](http://atom.io/docs/latest/converting-a-text-mate-bundle)
 from the [Mustache TextMate bundle](https://github.com/textmate/mustache.tmbundle).
