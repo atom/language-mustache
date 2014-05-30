@@ -1,7 +1,7 @@
 'fileTypes': [
   'mustache'
   'handlebars'
-  'hbs',
+  'hbs'
   'stache'
 ]
 'name': 'HTML (Mustache)'
