@@ -2,6 +2,7 @@
   'mustache'
   'handlebars'
   'hbs'
+  'stache'
 ]
 'name': 'HTML (Mustache)'
 'patterns': [
