@@ -12,6 +12,13 @@ describe 'Mustache grammar', ->
     expect(grammar).toBeTruthy()
     expect(grammar.scopeName).toBe 'text.html.mustache'
 
+  it 'parses expressions', ->
+    {tokens} = grammar.tokenizeLine("{{name}}")
+
+    expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[1]).toEqual value: 'name', scopes: ['text.html.mustache', 'meta.tag.template.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+
   it 'parses comments', ->
     {tokens} = grammar.tokenizeLine("{{!comment}}")
 
