@@ -1,0 +1,75 @@
+'scopeName': 'text.html.mustache'
+'name': 'HTML (Mustache)'
+'fileTypes': [
+  'handlebars'
+  'hbs'
+  'mustache'
+  'stache'
+]
+'patterns': [
+  {
+    'include': '#comment'
+  }
+  {
+    'include': '#block-expression-start'
+  }
+  {
+    'include': '#block-expression-end'
+  }
+  {
+    'include': '#escape'
+  }
+  {
+    'include': '#template'
+  }
+  {
+    'include': 'text.html.basic'
+  }
+]
+'repository':
+  'comment':
+    'begin': '\\{\\{!'
+    'end': '\\}\\}'
+    'name': 'comment.block.mustache'
+  'block-expression-start':
+    'begin': '\\{\\{([#^])(\\w*)'
+    'beginCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+      '1':
+        'name': 'punctuation.definition.block.begin.mustache'
+      '2':
+        'name': 'entity.name.function.mustache'
+    'end': '\\}\\}'
+    'endCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'name': 'meta.tag.template.mustache'
+  'block-expression-end':
+    'begin': '\\{\\{(/)(\\w*)'
+    'beginCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+      '1':
+        'name': 'punctuation.definition.block.end.mustache'
+      '2':
+        'name': 'entity.name.function.mustache'
+    'end': '\\}\\}'
+    'endCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'name': 'meta.tag.template.mustache'
+  'escape':
+    'begin': '\\{\\{\\{'
+    'end': '\\}\\}\\}'
+    'captures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'name': 'meta.tag.template.raw.mustache'
+  'template':
+    'begin': '\\{\\{[<>]?'
+    'end': '\\}\\}'
+    'captures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'name': 'meta.tag.template.mustache'
