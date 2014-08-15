@@ -32,11 +32,11 @@
     'end': '\\}\\}'
     'name': 'comment.block.mustache'
   'block-expression-start':
-    'begin': '(\\{\\{)(#\\w*)'
+    'begin': '\\{\\{(#\\w*)'
     'beginCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
       '1':
-        'name': 'punctuation.definition.tag.begin.mustache'
-      '2':
         'name': 'entity.name.function.mustache'
     'end': '\\}\\}'
     'endCaptures':
@@ -44,11 +44,11 @@
         'name': 'entity.name.tag.mustache'
     'name': 'meta.tag.template.mustache'
   'block-expression-end':
-    'begin': '(\\{\\{)(/\\w*)'
+    'begin': '\\{\\{(/\\w*)'
     'beginCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
       '1':
-        'name': 'punctuation.definition.tag.end.mustache'
-      '2':
         'name': 'entity.name.function.mustache'
     'end': '\\}\\}'
     'endCaptures':
