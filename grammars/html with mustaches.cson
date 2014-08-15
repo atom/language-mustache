@@ -57,15 +57,15 @@
     'name': 'meta.tag.template.mustache'
   'escape':
     'begin': '\\{\\{\\{'
+    'end': '\\}\\}\\}'
     'captures':
       '0':
         'name': 'entity.name.tag.mustache'
-    'end': '\\}\\}\\}'
     'name': 'meta.tag.template.raw.mustache'
   'template':
     'begin': '\\{\\{[<>^]?'
+    'end': '\\}\\}'
     'captures':
       '0':
         'name': 'entity.name.tag.mustache'
-    'end': '\\}\\}'
     'name': 'meta.tag.template.mustache'
