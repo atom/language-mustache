@@ -1,9 +1,9 @@
 'scopeName': 'text.html.mustache'
 'name': 'HTML (Mustache)'
 'fileTypes': [
-  'mustache'
   'handlebars'
   'hbs'
+  'mustache'
   'stache'
 ]
 'patterns': [
