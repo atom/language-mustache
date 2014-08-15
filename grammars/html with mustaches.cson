@@ -1,10 +1,11 @@
+'scopeName': 'text.html.mustache'
+'name': 'HTML (Mustache)'
 'fileTypes': [
   'mustache'
   'handlebars'
   'hbs'
   'stache'
 ]
-'name': 'HTML (Mustache)'
 'patterns': [
   {
     'begin': '\\{\\{!'
@@ -23,4 +24,3 @@
     'include': 'text.html.basic'
   }
 ]
-'scopeName': 'text.html.mustache'
