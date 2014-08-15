@@ -17,6 +17,9 @@
     'include': '#block-expression-end'
   }
   {
+    'include': '#escape'
+  }
+  {
     'include': '#template'
   }
   {
@@ -52,10 +55,17 @@
       '0':
         'name': 'entity.name.tag.mustache'
     'name': 'meta.tag.template.mustache'
-  'template':
-    'begin': '\\{\\{[{<>^]?'
+  'escape':
+    'begin': '\\{\\{\\{'
     'captures':
       '0':
         'name': 'entity.name.tag.mustache'
-    'end': '\\}?\\}\\}'
+    'end': '\\}\\}\\}'
+    'name': 'meta.tag.template.raw.mustache'
+  'template':
+    'begin': '\\{\\{[<>^]?'
+    'captures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'end': '\\}\\}'
     'name': 'meta.tag.template.mustache'
