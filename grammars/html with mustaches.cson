@@ -32,7 +32,7 @@
     'end': '\\}\\}'
     'name': 'comment.block.mustache'
   'block-expression-start':
-    'begin': '\\{\\{(#\\w*)'
+    'begin': '\\{\\{([#^]\\w*)'
     'beginCaptures':
       '0':
         'name': 'entity.name.tag.mustache'
@@ -63,7 +63,7 @@
         'name': 'entity.name.tag.mustache'
     'name': 'meta.tag.template.raw.mustache'
   'template':
-    'begin': '\\{\\{[<>^]?'
+    'begin': '\\{\\{[<>]?'
     'end': '\\}\\}'
     'captures':
       '0':
