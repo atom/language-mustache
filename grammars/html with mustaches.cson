@@ -11,6 +11,9 @@
     'include': '#comment'
   }
   {
+    'include': '#block-expression'
+  }
+  {
     'include': '#template'
   }
   {
@@ -22,8 +25,20 @@
     'begin': '\\{\\{!'
     'end': '\\}\\}'
     'name': 'comment.block.mustache'
+  'block-expression':
+    'begin': '(\\{\\{)(#\\w*)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.begin.mustache'
+      '2':
+        'name': 'entity.name.function.mustache'
+    'end': '\\}\\}'
+    'endCaptures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'name': 'meta.tag.template.mustache'
   'template':
-    'begin': '\\{\\{[{<>#^/]?'
+    'begin': '\\{\\{[{<>^/]?'
     'captures':
       '0':
         'name': 'entity.name.tag.mustache'
