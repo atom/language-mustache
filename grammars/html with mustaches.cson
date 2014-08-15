@@ -8,19 +8,24 @@
 ]
 'patterns': [
   {
+    'include': '#comment'
+  }
+  {
+    'include': '#template'
+  }
+  {
+    'include': 'text.html.basic'
+  }
+]
+'repository':
+  'comment':
     'begin': '\\{\\{!'
     'end': '\\}\\}'
     'name': 'comment.block.mustache'
-  }
-  {
+  'template':
     'begin': '\\{\\{[{<>#^/]?'
     'captures':
       '0':
         'name': 'entity.name.tag.mustache'
     'end': '\\}?\\}\\}'
     'name': 'meta.tag.template.mustache'
-  }
-  {
-    'include': 'text.html.basic'
-  }
-]
