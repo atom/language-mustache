@@ -38,3 +38,10 @@ describe 'Mustache grammar', ->
     expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
     expect(tokens[1]).toEqual value: '/if', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'entity.name.function.mustache']
     expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+
+  it 'parses unescaped expressions', ->
+    {tokens} = grammar.tokenizeLine("{{{do not escape me}}}")
+
+    expect(tokens[0]).toEqual value: '{{{', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache', 'entity.name.tag.mustache']
+    expect(tokens[1]).toEqual value: 'do not escape me', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache']
+    expect(tokens[2]).toEqual value: '}}}', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache', 'entity.name.tag.mustache']
