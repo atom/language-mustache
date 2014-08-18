@@ -1,10 +1,6 @@
 'scopeName': 'source.sql.mustache'
 'name': 'SQL (Mustache)'
 'fileTypes': [
-  'mustache'
-  'handlebars'
-  'hbs'
-  'stache'
 ]
 'patterns': [
   {
