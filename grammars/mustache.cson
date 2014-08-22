@@ -3,9 +3,9 @@
 'fileTypes': [
   'handlebars'
   'hbs'
-  'mustache'
-  'stache',
   'hjs'
+  'mustache'
+  'stache'
 ]
 'patterns': [
   {
