@@ -4,7 +4,8 @@
   'handlebars'
   'hbs'
   'mustache'
-  'stache'
+  'stache',
+  'hjs'
 ]
 'patterns': [
   {
