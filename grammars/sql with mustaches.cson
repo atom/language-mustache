@@ -4,17 +4,7 @@
 ]
 'patterns': [
   {
-    'begin': '\\{\\{!'
-    'end': '\\}\\}'
-    'name': 'comment.block.mustache'
-  }
-  {
-    'begin': '\\{\\{[{<>#^/]?'
-    'captures':
-      '0':
-        'name': 'entity.name.tag.mustache'
-    'end': '\\}?\\}\\}'
-    'name': 'meta.tag.template.mustache'
+    'include': 'text.html.mustache'
   }
   {
     'include': 'source.sql'
