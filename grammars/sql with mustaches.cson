@@ -1,0 +1,22 @@
+'scopeName': 'source.sql.mustache'
+'name': 'SQL (Mustache)'
+'fileTypes': [
+]
+'patterns': [
+  {
+    'begin': '\\{\\{!'
+    'end': '\\}\\}'
+    'name': 'comment.block.mustache'
+  }
+  {
+    'begin': '\\{\\{[{<>#^/]?'
+    'captures':
+      '0':
+        'name': 'entity.name.tag.mustache'
+    'end': '\\}?\\}\\}'
+    'name': 'meta.tag.template.mustache'
+  }
+  {
+    'include': 'source.sql'
+  }
+]
