@@ -6,7 +6,7 @@ describe 'Mustache grammar', ->
       atom.packages.activatePackage('language-mustache')
 
     runs ->
-      grammar = atom.syntax.grammarForScopeName('text.html.mustache')
+      grammar = atom.grammars.grammarForScopeName('text.html.mustache')
 
   it 'parses the grammar', ->
     expect(grammar).toBeTruthy()
