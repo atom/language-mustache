@@ -4,6 +4,7 @@
   'handlebars'
   'hbs'
   'hjs'
+  'mu'
   'mustache'
   'stache'
 ]
