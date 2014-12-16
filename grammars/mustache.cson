@@ -1,8 +1,6 @@
 'scopeName': 'text.html.mustache'
 'name': 'HTML (Mustache)'
 'fileTypes': [
-  'handlebars'
-  'hbs'
   'hjs'
   'mu'
   'mustache'
