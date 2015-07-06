@@ -6,8 +6,8 @@
   'hjs'
   'mu'
   'mustache'
-  'stache'
   'rac'
+  'stache'
 ]
 'patterns': [
   {
