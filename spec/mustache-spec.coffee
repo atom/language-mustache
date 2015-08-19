@@ -35,6 +35,13 @@ describe 'Mustache grammar', ->
     expect(tokens[3]).toEqual value: ' people', scopes: ['text.html.mustache', 'meta.tag.template.mustache']
     expect(tokens[4]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
 
+    {tokens} = grammar.tokenizeLine("{{# nested.block }}")
+
+    expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[1]).toEqual value: '# ', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'punctuation.definition.block.begin.mustache']
+    expect(tokens[2]).toEqual value: 'nested.block', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'entity.name.function.mustache']
+    expect(tokens[3]).toEqual value: ' }}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+
     {tokens} = grammar.tokenizeLine("{{^repo}}")
 
     expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
