@@ -1,6 +1,6 @@
 {
   "name": "language-mustache",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "Mustache language support in Atom",
   "license": "MIT",
   "engines": {
