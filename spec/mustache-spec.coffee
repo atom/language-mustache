@@ -32,9 +32,9 @@ describe 'Mustache grammar', ->
   it 'parses comments', ->
     {tokens} = grammar.tokenizeLine("{{!comment}}")
 
-    expect(tokens[0]).toEqual value: '{{!', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[0]).toEqual value: '{{!', scopes: ['text.html.mustache', 'comment.block.mustache', 'punctuation.definition.comment.mustache']
     expect(tokens[1]).toEqual value: 'comment', scopes: ['text.html.mustache', 'comment.block.mustache']
-    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache', 'punctuation.definition.comment.mustache']
 
   it 'parses block expression', ->
     {tokens} = grammar.tokenizeLine("{{#each people}}")
@@ -48,9 +48,9 @@ describe 'Mustache grammar', ->
     {tokens} = grammar.tokenizeLine("{{# nested.block }}")
 
     expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
-    expect(tokens[1]).toEqual value: '# ', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'punctuation.definition.block.begin.mustache']
-    expect(tokens[2]).toEqual value: 'nested.block', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'entity.name.function.mustache']
-    expect(tokens[3]).toEqual value: ' }}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[1]).toEqual value: '#', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'punctuation.definition.block.begin.mustache']
+    expect(tokens[3]).toEqual value: 'nested.block', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache', 'entity.name.function.mustache']
+    expect(tokens[5]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
 
     {tokens} = grammar.tokenizeLine("{{^repo}}")
 
@@ -84,7 +84,7 @@ describe 'Mustache grammar', ->
   it 'does not tokenize comments within comments', ->
     {tokens} = grammar.tokenizeLine("{{!test{{!test}}}}")
 
-    expect(tokens[0]).toEqual value: '{{!', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[0]).toEqual value: '{{!', scopes: ['text.html.mustache', 'comment.block.mustache', 'punctuation.definition.comment.mustache']
     expect(tokens[1]).toEqual value: 'test{{!test', scopes: ['text.html.mustache', 'comment.block.mustache']
-    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache', 'punctuation.definition.comment.mustache']
     expect(tokens[3]).toEqual value: '}}', scopes: ['text.html.mustache']
