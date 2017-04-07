@@ -3,6 +3,9 @@ describe 'Mustache grammar', ->
 
   beforeEach ->
     waitsForPromise ->
+      atom.packages.activatePackage('language-html')
+
+    waitsForPromise ->
       atom.packages.activatePackage('language-mustache')
 
     runs ->
@@ -18,6 +21,13 @@ describe 'Mustache grammar', ->
     expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
     expect(tokens[1]).toEqual value: 'name', scopes: ['text.html.mustache', 'meta.tag.template.mustache']
     expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+
+  it 'parses expressions in HTML attributes', ->
+    {tokens} = grammar.tokenizeLine("<a href='{{test}}'></a>")
+
+    expect(tokens[6]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.any.html', 'string.quoted.single.html', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[8]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.any.html', 'string.quoted.single.html', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[9]).toEqual value: "'", scopes: ['text.html.mustache', 'meta.tag.any.html', 'string.quoted.single.html', 'punctuation.definition.string.end.html']
 
   it 'parses comments', ->
     {tokens} = grammar.tokenizeLine("{{!comment}}")
@@ -62,3 +72,19 @@ describe 'Mustache grammar', ->
     expect(tokens[0]).toEqual value: '{{{', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache', 'entity.name.tag.mustache']
     expect(tokens[1]).toEqual value: 'do not escape me', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache']
     expect(tokens[2]).toEqual value: '}}}', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache', 'entity.name.tag.mustache']
+
+  it 'does not tokenize tags within tags', ->
+    {tokens} = grammar.tokenizeLine("{{test{{test}}}}")
+
+    expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[1]).toEqual value: 'test{{test', scopes: ['text.html.mustache', 'meta.tag.template.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[3]).toEqual value: '}}', scopes: ['text.html.mustache']
+
+  it 'does not tokenize comments within comments', ->
+    {tokens} = grammar.tokenizeLine("{{!test{{!test}}}}")
+
+    expect(tokens[0]).toEqual value: '{{!', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[1]).toEqual value: 'test{{!test', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[3]).toEqual value: '}}', scopes: ['text.html.mustache']
