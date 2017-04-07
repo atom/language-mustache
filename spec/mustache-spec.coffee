@@ -72,3 +72,19 @@ describe 'Mustache grammar', ->
     expect(tokens[0]).toEqual value: '{{{', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache', 'entity.name.tag.mustache']
     expect(tokens[1]).toEqual value: 'do not escape me', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache']
     expect(tokens[2]).toEqual value: '}}}', scopes: ['text.html.mustache', 'meta.tag.template.raw.mustache', 'entity.name.tag.mustache']
+
+  it 'does not tokenize tags within tags', ->
+    {tokens} = grammar.tokenizeLine("{{test{{test}}}}")
+
+    expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[1]).toEqual value: 'test{{test', scopes: ['text.html.mustache', 'meta.tag.template.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[3]).toEqual value: '}}', scopes: ['text.html.mustache']
+
+  it 'does not tokenize comments within comments', ->
+    {tokens} = grammar.tokenizeLine("{{!test{{!test}}}}")
+
+    expect(tokens[0]).toEqual value: '{{!', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[1]).toEqual value: 'test{{!test', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache']
+    expect(tokens[3]).toEqual value: '}}', scopes: ['text.html.mustache']
