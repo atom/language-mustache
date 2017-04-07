@@ -11,7 +11,7 @@
   'stache'
 ]
 'injections':
-  'L:text.html.mustache':
+  'L:text.html.mustache - (meta.tag.template.mustache | comment.block.mustache)':
     'patterns': [
       {
         'include': '#comment'
