@@ -10,22 +10,26 @@
   'ractive'
   'stache'
 ]
+'injections':
+  'L:text.html.mustache':
+    'patterns': [
+      {
+        'include': '#comment'
+      }
+      {
+        'include': '#block-expression-start'
+      }
+      {
+        'include': '#block-expression-end'
+      }
+      {
+        'include': '#escape'
+      }
+      {
+        'include': '#template'
+      }
+    ]
 'patterns': [
-  {
-    'include': '#comment'
-  }
-  {
-    'include': '#block-expression-start'
-  }
-  {
-    'include': '#block-expression-end'
-  }
-  {
-    'include': '#escape'
-  }
-  {
-    'include': '#template'
-  }
   {
     'include': 'text.html.basic'
   }

@@ -3,6 +3,9 @@ describe 'Mustache grammar', ->
 
   beforeEach ->
     waitsForPromise ->
+      atom.packages.activatePackage('language-html')
+
+    waitsForPromise ->
       atom.packages.activatePackage('language-mustache')
 
     runs ->
@@ -18,6 +21,13 @@ describe 'Mustache grammar', ->
     expect(tokens[0]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
     expect(tokens[1]).toEqual value: 'name', scopes: ['text.html.mustache', 'meta.tag.template.mustache']
     expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+
+  it 'parses expressions in HTML attributes', ->
+    {tokens} = grammar.tokenizeLine("<a href='{{test}}'></a>")
+
+    expect(tokens[6]).toEqual value: '{{', scopes: ['text.html.mustache', 'meta.tag.any.html', 'string.quoted.single.html', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[8]).toEqual value: '}}', scopes: ['text.html.mustache', 'meta.tag.any.html', 'string.quoted.single.html', 'meta.tag.template.mustache', 'entity.name.tag.mustache']
+    expect(tokens[9]).toEqual value: "'", scopes: ['text.html.mustache', 'meta.tag.any.html', 'string.quoted.single.html', 'punctuation.definition.string.end.html']
 
   it 'parses comments', ->
     {tokens} = grammar.tokenizeLine("{{!comment}}")
