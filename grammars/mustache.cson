@@ -15,6 +15,23 @@
   'L:text.html.mustache - (meta.tag.template.mustache | comment.block.mustache)':
     'patterns': [
       {
+        # This should be the only pattern here!
+        # Add everything else into #mustache below
+        'include': '#mustache'
+      }
+    ]
+'patterns': [
+  {
+    'include': 'text.html.basic'
+  }
+]
+'repository':
+  # The master pattern. All new patterns should be added here instead of in
+  # 'injections' to make including this language easier.
+  # See https://github.com/atom/language-mustache/issues/26
+  'mustache':
+    'patterns': [
+      {
         'include': '#comment'
       }
       {
@@ -30,12 +47,6 @@
         'include': '#template'
       }
     ]
-'patterns': [
-  {
-    'include': 'text.html.basic'
-  }
-]
-'repository':
   'comment':
     'begin': '{{!'
     'beginCaptures':
