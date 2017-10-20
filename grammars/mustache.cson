@@ -32,7 +32,10 @@
   'mustache':
     'patterns': [
       {
-        'include': '#comment'
+        'include': '#block-comment'
+      }
+      {
+        'include': '#inline-comment'
       }
       {
         'include': '#block-expression-start'
@@ -47,7 +50,17 @@
         'include': '#template'
       }
     ]
-  'comment':
+  'block-comment':
+    'begin': '{{!--'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.mustache'
+    'end': '--}}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.mustache'
+    'name': 'comment.block.mustache'
+  'inline-comment':
     'begin': '{{!'
     'beginCaptures':
       '0':
