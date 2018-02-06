@@ -95,3 +95,10 @@ describe 'Mustache grammar', ->
     expect(tokens[1]).toEqual value: 'test{{!test', scopes: ['text.html.mustache', 'comment.block.mustache']
     expect(tokens[2]).toEqual value: '}}', scopes: ['text.html.mustache', 'comment.block.mustache', 'punctuation.definition.comment.mustache']
     expect(tokens[3]).toEqual value: '}}', scopes: ['text.html.mustache']
+
+  it 'does not tokenize Mustache expressions inside HTML comments', ->
+    {tokens} = grammar.tokenizeLine("<!--{{test}}-->")
+
+    expect(tokens[0]).toEqual value: '<!--', scopes: ['text.html.mustache', 'comment.block.html', 'punctuation.definition.comment.html']
+    expect(tokens[1]).toEqual value: '{{test}}', scopes: ['text.html.mustache', 'comment.block.html']
+    expect(tokens[2]).toEqual value: '-->', scopes: ['text.html.mustache', 'comment.block.html', 'punctuation.definition.comment.html']
