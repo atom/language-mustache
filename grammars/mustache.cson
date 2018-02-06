@@ -12,7 +12,7 @@
   'stache'
 ]
 'injections':
-  'L:text.html.mustache - (meta.tag.template.mustache | comment.block.mustache)':
+  'L:text.html.mustache - (meta.tag.template.mustache | comment.block)':
     'patterns': [
       {
         # This should be the only pattern here!
